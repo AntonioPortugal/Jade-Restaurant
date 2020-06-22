@@ -53,6 +53,8 @@ namespace Data.Base
             _isDeleted = isDeleted;
 
         }
+
     }
+
 }
-} //f
+
