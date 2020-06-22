@@ -13,7 +13,7 @@ namespace Data.UserInfo
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
 
-        public JadeUser()
+        public JadeUser() : base()
         {
             Id = Guid.NewGuid();
 
