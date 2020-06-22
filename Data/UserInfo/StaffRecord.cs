@@ -1,5 +1,7 @@
 ﻿using Data.Base;
+using Data.RestaurantInfo;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -43,6 +45,13 @@ namespace Data.UserInfo
 
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
+
+        [ForeignKey("Restaurant")]
+        public Guid RestaurantId { get; set; }
+
+        public virtual ICollection<StaffTitle> StaffTitles { get; set; }
+
+
 
         public StaffRecord(DateTime beginDate, DateTime endDate)
         {
