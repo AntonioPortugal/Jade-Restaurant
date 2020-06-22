@@ -24,12 +24,11 @@ namespace Data.RestaurantInfo
         public Booking(DateTime date)
         {
             _date = date;
-
         }
+
         public Booking(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime date) : base(id, createdAt, updatedAt, isDeleted)
         {
             _date = date;
-
         }
     }
 }
