@@ -1,4 +1,5 @@
 ﻿using Data.Base;
+using Data.UserInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,6 +84,10 @@ namespace Data.RestaurantInfo
                 RegisterChange();
             }
         }
+
+        public virtual ICollection<ClientRecord> ClientRecords{ get; set; }
+
+        public virtual ICollection<StaffRecord> StaffRecords { get; set; }
 
         public Restaurant(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, string address, string openingHours, string closingHours, string closingDays, int tableCount) : base(id, createdAt, updatedAt, isDeleted, name)
         {

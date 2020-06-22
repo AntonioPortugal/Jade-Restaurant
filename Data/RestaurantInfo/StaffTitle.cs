@@ -40,6 +40,9 @@ namespace Data.RestaurantInfo
         [ForeignKey("Title")]
         public Guid TitleId { get; set; }
 
+        [ForeignKey("StaffRecord")]
+        public Guid StaffRecordId { get; set; }
+
         public StaffTitle(DateTime startDate, DateTime endDate)
         {
             _startDate = startDate;

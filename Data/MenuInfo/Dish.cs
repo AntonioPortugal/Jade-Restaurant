@@ -12,8 +12,8 @@ namespace Data.MenuInfo
         public Guid DietaryRestrictionId { get; set; }
         public virtual DietaryRestriction DietaryRestriction { get; set; }
 
-
         public virtual ICollection<Serving> ServingsRecords { get; set; }
+
         public Dish(string name) : base(name)
         {
         }
