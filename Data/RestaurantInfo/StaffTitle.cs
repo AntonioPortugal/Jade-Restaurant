@@ -1,6 +1,7 @@
 ﻿using Data.Base;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.RestaurantInfo
 {
@@ -13,6 +14,9 @@ namespace Data.RestaurantInfo
         [Required]
         [Display(Name = "End Date")]
         public DateTime EndDate;
+
+        [ForeignKey("Title")]
+        public Guid TitleId { get; set; }
 
         public StaffTitle(DateTime startDate, DateTime endDate)
         {
