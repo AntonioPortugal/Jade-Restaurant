@@ -1,8 +1,7 @@
 ﻿using Data.Base;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.UserInfo
 {
@@ -41,6 +40,9 @@ namespace Data.UserInfo
             }
 
         }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
 
         public StaffRecord(DateTime beginDate, DateTime endDate)
         {

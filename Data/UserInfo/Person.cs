@@ -1,6 +1,8 @@
 ﻿using Data.Base;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.UserInfo
 {
@@ -90,6 +92,13 @@ namespace Data.UserInfo
             }
 
         }
+
+        [ForeignKey("Jade User")]
+        public Guid UserId { get; set; }
+
+        public virtual ICollection<StaffRecord> StaffRecords { get; set; }
+        public virtual ICollection<ClientRecord> ClientRecords { get; set; }
+
 
         public Person(long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate)
         {

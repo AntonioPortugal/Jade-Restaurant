@@ -1,10 +1,11 @@
 ﻿using Data.Base;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.UserInfo
 {
-    class ClientRecord : Entity
+    public class ClientRecord : Entity
     {
         private DateTime _registerDate;
 
@@ -19,9 +20,12 @@ namespace Data.UserInfo
                 _registerDate = value;
                 RegisterChange();
 
-            } 
+            }
 
-        } 
+        }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
 
         public ClientRecord (DateTime registrationDate)
         {

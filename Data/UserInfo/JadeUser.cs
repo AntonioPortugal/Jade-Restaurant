@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.UserInfo
 {
@@ -8,6 +9,9 @@ namespace Data.UserInfo
     {
         [Key]
         public Guid Id { get; private set; }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
 
         public JadeUser()
         {
