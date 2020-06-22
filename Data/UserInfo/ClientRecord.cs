@@ -27,6 +27,9 @@ namespace Data.UserInfo
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
 
+        [ForeignKey("Restaurant")]
+        public Guid RestaurantId { get; set; }
+
         public ClientRecord (DateTime registrationDate)
         {
             _registerDate = registrationDate;
