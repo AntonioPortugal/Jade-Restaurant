@@ -7,6 +7,6 @@ namespace Data.MenuInfo
 {
     public class Meal : NamedEntity
     {
-
+        fgfgfgfg
     }
 }
