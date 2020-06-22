@@ -1,5 +1,7 @@
 ﻿using Data.Base;
+using Data.RestaurantInfo;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,6 +31,8 @@ namespace Data.UserInfo
 
         [ForeignKey("Restaurant")]
         public Guid RestaurantId { get; set; }
+
+        public virtual ICollection<Booking> Bookings { get; set; }
 
         public ClientRecord (DateTime registrationDate)
         {
