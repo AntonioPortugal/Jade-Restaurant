@@ -1,5 +1,6 @@
 ﻿using Data.Base;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Data.RestaurantInfo
@@ -36,6 +37,8 @@ namespace Data.RestaurantInfo
                 RegisterChange();
             }
         }
+
+        public virtual ICollection<StaffTitle> StaffTitleRecords { get; set; }
 
         public Title(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, string position, string description) : base(id, createdAt, updatedAt, isDeleted, name)
         {
