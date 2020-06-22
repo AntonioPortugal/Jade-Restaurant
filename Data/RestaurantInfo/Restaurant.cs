@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Data.RestaurantInfo
 {
-    class Restaurant
+    public class Restaurant
     {
     }
 }
