@@ -21,6 +21,7 @@ namespace Data.MenuInfo
 
         [ForeignKey("Meal")]
         public Guid MealId { get; set; }
+        public virtual Meal Meal { get; set; }
 
         public virtual ICollection<Serving> ServingsRecords { get; set; }
 

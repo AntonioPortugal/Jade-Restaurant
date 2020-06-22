@@ -10,13 +10,17 @@ namespace Data.MenuInfo
     {
         [ForeignKey("Menu")]
         public Guid MenuId { get; set; }
+        public virtual Menu Menu { get; set; }
+
 
         [ForeignKey("Dish")]
         public Guid DishId { get; set; }
+        public virtual Dish Dish { get; set; }
+
 
         [ForeignKey("Course")]
         public Guid CourseId { get; set; }
-
+        public virtual Course Course { get; set; }
 
 
         public Serving()
