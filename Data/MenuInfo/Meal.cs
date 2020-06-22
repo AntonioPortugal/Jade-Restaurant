@@ -8,6 +8,15 @@ namespace Data.MenuInfo
 {
     public class Meal : NamedEntity
     {
-        public string
+        private string StartingHours { get; set; }
+        private string EndingHours { get; set; }
+
+
+        public Meal(string startingHours, string endingHours)
+        {
+            StartingHours = startingHours;
+            EndingHours = endingHours;
+        }
+     
     }
 }
