@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data.RestaurantInfo
 {
-    public class Title
+    public class Title : NamedEntity
     {
         private string _position;
 
@@ -37,5 +37,10 @@ namespace Data.RestaurantInfo
             }
         }
 
+        public Title(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, string position, string description) : base(id, createdAt, updatedAt, isDeleted, name)
+        {
+            _position = position;
+            _description = description;
+        }
     }
 }

@@ -7,27 +7,49 @@ namespace Data.RestaurantInfo
 {
     public class StaffTitle : Entity
     {
+        private DateTime _startDate;
+
         [Required]
         [Display(Name = "Start Date")]
-        public DateTime StartDate;
+        public DateTime StartDate
+        {
+            get => _startDate;
+
+            set
+            {
+                _startDate = value;
+                RegisterChange();
+            }
+        }
+
+        private DateTime _endDate;
 
         [Required]
         [Display(Name = "End Date")]
-        public DateTime EndDate;
+        public DateTime EndDate
+        {
+            get => _endDate;
+
+            set
+            {
+                _endDate = value;
+                RegisterChange();
+            }
+        }
 
         [ForeignKey("Title")]
         public Guid TitleId { get; set; }
 
         public StaffTitle(DateTime startDate, DateTime endDate)
         {
-            StartDate = startDate;
-            EndDate = endDate;
+            _startDate = startDate;
+            _endDate = endDate;
 
         }
         public StaffTitle(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime startDate, DateTime endDate) : base(id, createdAt, updatedAt, isDeleted)
         {
-            StartDate = startDate;
-            EndDate = endDate;
+            _startDate = startDate;
+            _endDate = endDate;
 
         }
     }
