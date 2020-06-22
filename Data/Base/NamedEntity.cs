@@ -8,7 +8,7 @@ namespace Data.Base
         private string _name;
 
         [Required]
-        public string Name
+        public string Na2me
         {
             get => _name;
 
