@@ -13,6 +13,7 @@ namespace Data.RestaurantInfo
         public DateTime Date
         {
             get => _date;
+
             set
             {
                 _date = value;
