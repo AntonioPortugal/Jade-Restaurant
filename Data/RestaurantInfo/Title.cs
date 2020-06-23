@@ -36,7 +36,7 @@ namespace Data.RestaurantInfo
             }
         }
 
-        public virtual ICollection<StaffTitle> StaffTitles { get; set; }
+        public virtual ICollection<StaffTitle> TitleStaff { get; set; }
 
         public Title(string name, string position, string description) : base(name)
         {

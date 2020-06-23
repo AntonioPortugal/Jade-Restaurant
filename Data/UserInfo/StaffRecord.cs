@@ -51,7 +51,7 @@ namespace Data.UserInfo
         public Guid RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
-        public virtual ICollection<StaffTitle> StaffTitles { get; set; }
+        public virtual ICollection<StaffTitle> StaffTitle { get; set; }
 
 
 
