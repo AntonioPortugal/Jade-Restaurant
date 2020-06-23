@@ -5,10 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.UserInfo
 {
-    public class JadeUser : IdentityUser 
+    public class JadeUser : IdentityUser<Guid>
     {
         [Key]
-        public new Guid Id { get; private set; }
+        public override Guid Id { get; set; }
 
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
