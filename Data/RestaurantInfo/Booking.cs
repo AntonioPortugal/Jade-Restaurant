@@ -1,4 +1,5 @@
 ﻿using Data.Base;
+using Data.UserInfo;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,8 +10,7 @@ namespace Data.RestaurantInfo
     {
         private DateTime _date;
 
-        [Required]
-        [Display(Name = "Date")]
+        [Required(ErrorMessage = "Required Attribute")]
         public DateTime Date
         {
             get => _date;
@@ -24,6 +24,7 @@ namespace Data.RestaurantInfo
 
         [ForeignKey("ClientRecord")]        
         public Guid ClientRecordId { get; set; }
+        public virtual ClientRecord ClientRecord { get; set; }
 
 
         public Booking(DateTime date)

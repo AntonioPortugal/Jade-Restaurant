@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Net;
-using System.Text;
 
 namespace Data.MenuInfo
 {
@@ -12,6 +10,7 @@ namespace Data.MenuInfo
         private string _startingHours;
         private string _endingHours;
 
+        [Required(ErrorMessage = "Required Attribute")]
         [Display(Name = "Starting Hours")]
         public string StartingHours
         {
@@ -23,6 +22,7 @@ namespace Data.MenuInfo
             }
         }
 
+        [Required(ErrorMessage = "Required Attribute")]
         [Display(Name = "Ending Hours")]
         public string EndingHours
         {
@@ -34,7 +34,7 @@ namespace Data.MenuInfo
             }
         }
 
-        public virtual ICollection<Menu> MenuRecords { get; set; }
+        public virtual ICollection<Menu> Menus { get; set; }
 
 
         public Meal(string name, string startingHours, string endingHours) : base(name)

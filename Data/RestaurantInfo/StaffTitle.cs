@@ -1,4 +1,5 @@
 ﻿using Data.Base;
+using Data.UserInfo;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -39,9 +40,11 @@ namespace Data.RestaurantInfo
 
         [ForeignKey("Title")]
         public Guid TitleId { get; set; }
+        public virtual Title Title { get; set; }
 
         [ForeignKey("StaffRecord")]
         public Guid StaffRecordId { get; set; }
+        public virtual StaffRecord StaffRecord { get; set; }
 
         public StaffTitle(DateTime startDate, DateTime endDate)
         {

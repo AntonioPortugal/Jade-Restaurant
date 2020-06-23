@@ -93,12 +93,9 @@ namespace Data.UserInfo
 
         }
 
-        [ForeignKey("Person")]
+        [ForeignKey("Jade User")]
         public Guid UserId { get; set; }
-
-        [Required]
-        [Display(Name = "Jade User")]
-        public JadeUser User { get; set; }
+        public virtual JadeUser JadeUser { get; set; }
 
         public virtual ICollection<StaffRecord> StaffRecords { get; set; }
         public virtual ICollection<ClientRecord> ClientRecords { get; set; }

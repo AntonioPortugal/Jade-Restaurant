@@ -1,10 +1,9 @@
 ﻿using Data.Base;
+using Data.MenuInfo;
 using Data.UserInfo;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Data.RestaurantInfo
 {
@@ -12,8 +11,7 @@ namespace Data.RestaurantInfo
     {
         private string _address;
 
-        [Required]
-        [Display(Name = "Address")]
+        [Required(ErrorMessage = "Required Attribute")]
         public string Address
         {
             get => _address;
@@ -27,7 +25,7 @@ namespace Data.RestaurantInfo
 
         private string _openingHours;
 
-        [Required]
+        [Required(ErrorMessage = "Required Attribute")]
         [Display(Name = "Opening Hours")]
         public string OpeningHours
         {
@@ -42,7 +40,7 @@ namespace Data.RestaurantInfo
 
         private string _closingHours;
 
-        [Required]
+        [Required(ErrorMessage = "Required Attribute")]
         [Display(Name = "Closing Hours")]
         public string ClosingHours
         {
@@ -57,7 +55,7 @@ namespace Data.RestaurantInfo
 
         private string _closingDays;
 
-        [Required]
+        [Required(ErrorMessage = "Required Attribute")]
         [Display(Name = "Closing Days")]
         public string ClosingDays
         {
@@ -72,7 +70,7 @@ namespace Data.RestaurantInfo
 
         private int _tableCount;
 
-        [Required]
+        [Required(ErrorMessage = "Required Attribute")]
         [Display(Name = "Table Count")]
         public int TableCount
         {
@@ -88,6 +86,17 @@ namespace Data.RestaurantInfo
         public virtual ICollection<ClientRecord> ClientRecords{ get; set; }
 
         public virtual ICollection<StaffRecord> StaffRecords { get; set; }
+
+        public virtual ICollection<Menu> Menus { get; set; }
+
+        public Restaurant(string name, string address, string openingHours, string closingHours, string closingDays, int tableCount) : base(name)
+        {
+            _address = address;
+            _openingHours = openingHours;
+            _closingHours = closingHours;
+            _closingDays = closingDays;
+            _tableCount = tableCount;
+        }
 
         public Restaurant(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, string address, string openingHours, string closingHours, string closingDays, int tableCount) : base(id, createdAt, updatedAt, isDeleted, name)
         {

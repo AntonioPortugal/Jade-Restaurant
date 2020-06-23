@@ -10,7 +10,6 @@ namespace Data.RestaurantInfo
         private string _position;
 
         [Required]
-        [Display(Name = "Position")]
         public string Position
         {
             get => _position;
@@ -26,7 +25,6 @@ namespace Data.RestaurantInfo
         private string _description;
 
         [Required]
-        [Display(Name = "Description")]
         public string Description
         {
             get => _description;
@@ -39,6 +37,12 @@ namespace Data.RestaurantInfo
         }
 
         public virtual ICollection<StaffTitle> StaffTitles { get; set; }
+
+        public Title(string name, string position, string description) : base(name)
+        {
+            _position = position;
+            _description = description;
+        }
 
         public Title(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, string position, string description) : base(id, createdAt, updatedAt, isDeleted, name)
         {

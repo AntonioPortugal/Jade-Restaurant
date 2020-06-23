@@ -2,14 +2,16 @@
 using Data.RestaurantInfo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Data.MenuInfo
 {
     public class Menu : Entity
     {
         private DateTime _date;
+
+        [Required(ErrorMessage = "Required Attribute")]
         public DateTime Date 
         {
             get => _date;

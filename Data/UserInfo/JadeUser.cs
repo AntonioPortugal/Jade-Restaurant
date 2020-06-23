@@ -8,13 +8,11 @@ namespace Data.UserInfo
     public class JadeUser : IdentityUser
     {
         [Key]
-        public Guid Id { get; private set; }
+        public new Guid Id { get; private set; }
 
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
-
-        [Required]
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
 
         public JadeUser() : base()
         {
