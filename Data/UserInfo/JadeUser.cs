@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.UserInfo
 {
-    public class JadeUser : IdentityUser
+    public class JadeUser : IdentityUser 
     {
         [Key]
         public new Guid Id { get; private set; }
