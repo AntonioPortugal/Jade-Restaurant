@@ -7,7 +7,7 @@ namespace Data.MenuInfo
 {
     public class DietaryRestriction : NamedEntity
     {
-        public virtual ICollection<Dish> DishesRecords { get; set; }
+        public virtual ICollection<Dish> Dishes{ get; set; }
 
         public DietaryRestriction(string name) : base(name)
         {

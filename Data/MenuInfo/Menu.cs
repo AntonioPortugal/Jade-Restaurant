@@ -1,4 +1,5 @@
 ﻿using Data.Base;
+using Data.RestaurantInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,12 +22,13 @@ namespace Data.MenuInfo
 
         [ForeignKey("Meal")]
         public Guid MealId { get; set; }
-        public virtual Meal Meal { get; set; }//??
+        public virtual Meal Meal { get; set; }
 
         [ForeignKey("Restaurant")]
         public Guid RestaurantId { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
 
-        public virtual ICollection<Serving> ServingsRecords { get; set; }//ServingsRecords ???
+        public virtual ICollection<Serving> Servings { get; set; }
 
         public Menu(DateTime date)
         {
