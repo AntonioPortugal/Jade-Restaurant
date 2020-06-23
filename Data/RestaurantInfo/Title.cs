@@ -38,7 +38,7 @@ namespace Data.RestaurantInfo
             }
         }
 
-        public virtual ICollection<StaffTitle> StaffTitleRecords { get; set; }
+        public virtual ICollection<StaffTitle> StaffTitles { get; set; }
 
         public Title(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, string position, string description) : base(id, createdAt, updatedAt, isDeleted, name)
         {
