@@ -93,6 +93,9 @@ namespace Data.UserInfo
 
         }
 
+        [ForeignKey("Person")]
+        public Guid UserId { get; set; }
+
         [Required]
         [Display(Name = "Jade User")]
         public JadeUser User { get; set; }

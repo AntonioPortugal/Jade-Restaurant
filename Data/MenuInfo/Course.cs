@@ -7,7 +7,7 @@ namespace Data.MenuInfo
 {
     public class Course : NamedEntity
     {
-        public virtual ICollection<Serving> ServingsRecords { get; set; }
+        public virtual ICollection<Serving> Servings { get; set; }
 
         public Course(string name) : base(name)
         {
