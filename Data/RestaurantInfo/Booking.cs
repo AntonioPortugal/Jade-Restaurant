@@ -27,14 +27,16 @@ namespace Data.RestaurantInfo
         public virtual ClientRecord ClientRecord { get; set; }
 
 
-        public Booking(DateTime date)
+        public Booking(DateTime date, Guid clientRecordId)
         {
             _date = date;
+            ClientRecordId = clientRecordId;
         }
 
-        public Booking(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime date) : base(id, createdAt, updatedAt, isDeleted)
+        public Booking(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime date, Guid clientRecordId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _date = date;
+            ClientRecordId = clientRecordId;
         }
     }
 }

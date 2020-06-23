@@ -93,7 +93,7 @@ namespace Data.UserInfo
 
         }
 
-        [ForeignKey("Jade User")]
+        [ForeignKey("JadeUser")]
         public Guid UserId { get; set; }
         public virtual JadeUser JadeUser { get; set; }
 
@@ -101,22 +101,24 @@ namespace Data.UserInfo
         public virtual ICollection<ClientRecord> ClientRecords { get; set; }
 
 
-        public Person(long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate)
+        public Person(long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate, Guid userId)
         {
             _vatNumber = vatNumber;
             _firstName = firstName;
             _lastName = lastName;
             _phoneNumber = phoneNumber;
             _birthDate = birthDate;
+            UserId = userId;
         }
 
-        protected Person(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate) : base(id, createdAt, updatedAt, isDeleted)
+        protected Person(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate, Guid userId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _vatNumber = vatNumber;
             _firstName = firstName;
             _lastName = lastName;
             _phoneNumber = phoneNumber;
             _birthDate = birthDate;
+            UserId = userId;
         }
 
     }

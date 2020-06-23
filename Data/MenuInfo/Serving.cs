@@ -21,12 +21,18 @@ namespace Data.MenuInfo
         public virtual Course Course { get; set; }
 
 
-        public Serving(/*adicionar ids*/)
+        public Serving(Guid menuId, Guid dishId, Guid courseId)
         {
+            MenuId = menuId;
+            DishId = dishId;
+            CourseId = courseId;
         }
 
-        public Serving(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted) : base(id, createdAt, updatedAt, isDeleted)
+        public Serving(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, Guid menuId, Guid dishId, Guid courseId) : base(id, createdAt, updatedAt, isDeleted)
         {
+            MenuId = menuId;
+            DishId = dishId;
+            CourseId = courseId;
         }
     }
 }

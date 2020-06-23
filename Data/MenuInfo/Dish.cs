@@ -13,12 +13,14 @@ namespace Data.MenuInfo
 
         public virtual ICollection<Serving> Servings{ get; set; }
 
-        public Dish(string name) : base(name)
+        public Dish(string name, Guid dietaryRestrictionId) : base(name)
         {
+            DietaryRestrictionId = dietaryRestrictionId;
         }
 
-        public Dish(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name) : base(id, createdAt, updatedAt, isDeleted, name)
+        public Dish(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, string name, Guid dietaryRestrictionId) : base(id, createdAt, updatedAt, isDeleted, name)
         {
+            DietaryRestrictionId = dietaryRestrictionId;
         }
     }
 }

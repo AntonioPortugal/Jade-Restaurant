@@ -32,14 +32,18 @@ namespace Data.MenuInfo
 
         public virtual ICollection<Serving> Servings { get; set; }
 
-        public Menu(DateTime date)
+        public Menu(DateTime date, Guid mealId, Guid restaurantId)
         {
             _date = date;
+            MealId = mealId;
+            RestaurantId = restaurantId;
         }
 
-        public Menu(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime date) : base(id, createdAt, updatedAt, isDeleted)
+        public Menu(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime date, Guid mealId, Guid restaurantId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _date = date;
+            MealId = mealId;
+            RestaurantId = restaurantId;
         }
 
     }

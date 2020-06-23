@@ -46,17 +46,20 @@ namespace Data.RestaurantInfo
         public Guid StaffRecordId { get; set; }
         public virtual StaffRecord StaffRecord { get; set; }
 
-        public StaffTitle(DateTime startDate, DateTime endDate)
+        public StaffTitle(DateTime startDate, DateTime endDate, Guid titleId, Guid staffRecordId)
         {
             _startDate = startDate;
             _endDate = endDate;
+            TitleId = titleId;
+            StaffRecordId = staffRecordId;
 
         }
-        public StaffTitle(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime startDate, DateTime endDate) : base(id, createdAt, updatedAt, isDeleted)
+        public StaffTitle(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime startDate, DateTime endDate, Guid titleId, Guid staffRecordId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _startDate = startDate;
             _endDate = endDate;
-
+            TitleId = titleId;
+            StaffRecordId = staffRecordId;
         }
     }
 }

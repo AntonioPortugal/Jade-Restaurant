@@ -55,18 +55,20 @@ namespace Data.UserInfo
 
 
 
-        public StaffRecord(DateTime beginDate, DateTime endDate)
+        public StaffRecord(DateTime beginDate, DateTime endDate, Guid personId, Guid restaurantId)
         {
             _beginDate = beginDate;
             _endDate = endDate;
-
+            PersonId = personId;
+            RestaurantId = restaurantId;
         }
 
-        public StaffRecord(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime beginDate, DateTime endDate) : base(id, createdAt, updatedAt, isDeleted)
+        public StaffRecord(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime beginDate, DateTime endDate, Guid personId, Guid restaurantId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _beginDate = beginDate;
             _endDate = endDate;
-
+            PersonId = personId;
+            RestaurantId = restaurantId;
         }
 
     }

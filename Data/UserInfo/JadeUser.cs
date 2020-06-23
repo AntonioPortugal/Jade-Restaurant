@@ -14,10 +14,10 @@ namespace Data.UserInfo
         public Guid PersonId { get; set; }
         public virtual Person Person { get; set; }
 
-        public JadeUser() : base()
+        public JadeUser(Guid personId)
         {
             Id = Guid.NewGuid();
-
+            PersonId = personId;
         }
 
     }

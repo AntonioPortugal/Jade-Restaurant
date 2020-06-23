@@ -36,15 +36,18 @@ namespace Data.UserInfo
 
         public virtual ICollection<Booking> Bookings { get; set; }
 
-        public ClientRecord (DateTime registrationDate)
+        public ClientRecord (DateTime registrationDate, Guid personId, Guid restaurantId)
         {
             _registerDate = registrationDate;
+            PersonId = personId;
+            RestaurantId = restaurantId;
 
         }
-        public ClientRecord(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime registrationDate) : base(id, createdAt, updatedAt, isDeleted)
+        public ClientRecord(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime registrationDate, Guid personId, Guid restaurantId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _registerDate = registrationDate;
-
+            PersonId = personId;
+            RestaurantId = restaurantId;
         }
 
     }
