@@ -21,7 +21,7 @@ namespace Data.MenuInfo
         public virtual Course Course { get; set; }
 
 
-        public Serving()
+        public Serving(/*adicionar ids*/)
         {
         }
 

@@ -7,7 +7,7 @@ namespace Data.MenuInfo
 {
     public class Dish : NamedEntity
     {
-        [ForeignKey("Dietary Restriction")]
+        [ForeignKey("DietaryRestriction")]
         public Guid DietaryRestrictionId { get; set; }
         public virtual DietaryRestriction DietaryRestriction { get; set; }
 
