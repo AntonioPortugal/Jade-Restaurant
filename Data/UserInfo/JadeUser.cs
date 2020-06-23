@@ -10,8 +10,8 @@ namespace Data.UserInfo
         [Key]
         public Guid Id { get; private set; }
 
-        [ForeignKey("Person")]
-        public Guid PersonId { get; set; }
+        [Required]
+        public Person Person { get; set; }
 
         public JadeUser() : base()
         {
