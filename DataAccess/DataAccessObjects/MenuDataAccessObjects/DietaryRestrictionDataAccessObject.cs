@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.DataAccessObjects.RestarauntDataAccessObjects
 {
-    class DietaryRestrictionDataAccessObject
+    public class DietaryRestrictionDataAccessObject
     {
         private RestaurantContext _context;
 
