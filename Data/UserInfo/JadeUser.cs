@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.UserInfo
+namespace RECODME.RD.Jade.Data.UserInfo
 {
     public class JadeUser : IdentityUser<Guid>
     {

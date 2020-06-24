@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess.Properties {
+namespace RECODME.RD.Jade.DataAccess.Properties.Resources {
     using System;
     
     

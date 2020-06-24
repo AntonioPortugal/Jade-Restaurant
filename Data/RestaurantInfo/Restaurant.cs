@@ -1,11 +1,11 @@
-﻿using Data.Base;
-using Data.MenuInfo;
-using Data.UserInfo;
+﻿using RECODME.RD.Jade.Data.Base;
+using RECODME.RD.Jade.Data.MenuInfo;
+using RECODME.RD.Jade.Data.UserInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Data.RestaurantInfo
+namespace RECODME.RD.Jade.Data.RestaurantInfo
 {
     public class Restaurant : NamedEntity
     {

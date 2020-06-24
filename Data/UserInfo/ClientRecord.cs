@@ -1,11 +1,11 @@
-﻿using Data.Base;
-using Data.RestaurantInfo;
+﻿using RECODME.RD.Jade.Data.Base;
+using RECODME.RD.Jade.Data.RestaurantInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.UserInfo
+namespace RECODME.RD.Jade.Data.UserInfo
 {
     public class ClientRecord : Entity
     {

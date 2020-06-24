@@ -1,8 +1,8 @@
-﻿using Data.Base;
+﻿using RECODME.RD.Jade.Data.Base;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.MenuInfo
+namespace RECODME.RD.Jade.Data.MenuInfo
 {
     public class Serving : Entity
     {

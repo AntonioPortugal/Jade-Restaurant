@@ -1,11 +1,11 @@
-﻿using Data.UserInfo;
-using DataAccess.Contexts;
+﻿using RECODME.RD.Jade.Data.UserInfo;
+using RECODME.RD.Jade.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataAccess.DataAccessObjects.personDataAccessObjects
+namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.UserDataAccessObjects
 {
     public class PersonDataAccessObject
     {

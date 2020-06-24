@@ -1,10 +1,10 @@
-﻿using Data.Base;
-using Data.UserInfo;
+﻿using RECODME.RD.Jade.Data.Base;
+using RECODME.RD.Jade.Data.UserInfo;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.RestaurantInfo
+namespace RECODME.RD.Jade.Data.RestaurantInfo
 {
     public class Booking : Entity
     {
