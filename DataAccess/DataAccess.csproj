@@ -29,4 +29,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataAccessObjects\UserDataAccessObjects\" />
+    <Folder Include="DataAccessObjects\RestaurantInfoDataAccessObjects\" />
+  </ItemGroup>
+
 </Project>
