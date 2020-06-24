@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DataAccessObjects
 {
-    class CourseDataAccessObject
+    public class CourseDataAccessObject
     {
         private RestaurantContext _context;
 
