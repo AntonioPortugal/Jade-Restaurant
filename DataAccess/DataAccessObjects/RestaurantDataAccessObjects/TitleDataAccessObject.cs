@@ -9,27 +9,27 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 {
-    public class RestaurantDataAccessObject
+    public class TitleDataAccessObject
     {
         private RestaurantContext _context;
 
-        public RestaurantDataAccessObject()
+        public TitleDataAccessObject()
         {
             _context = new RestaurantContext();
         }
 
         #region C
 
-        public void Create(Restaurant restaurant)
+        public void Create(Title title)
         {
-            _context.Restaurants.Add(restaurant);
+            _context.Titles.Add(title);
             _context.SaveChanges();
 
         }
 
-        public async Task CreateAsync(Restaurant restaurant)
+        public async Task CreateAsync(Title title)
         {
-            await _context.Restaurants.AddAsync(restaurant);
+            await _context.Titles.AddAsync(title);
             await _context.SaveChangesAsync();
 
         }
@@ -38,16 +38,16 @@ namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 
         #region R
 
-        public Restaurant Read(Guid id)
+        public Title Read(Guid id)
         {
-            return _context.Restaurants.FirstOrDefault(x => x.Id == id);
+            return _context.Titles.FirstOrDefault(x => x.Id == id);
 
         }
 
-        public async Task<Restaurant> ReadAsync(Guid id)
+        public async Task<Title> ReadAsync(Guid id)
         {
             return await
-                new Task<Restaurant>(() => _context.Restaurants.FirstOrDefault(x => x.Id == id));
+                new Task<Title>(() => _context.Titles.FirstOrDefault(x => x.Id == id));
 
         }
 
@@ -55,16 +55,16 @@ namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 
         #region U
 
-        public void Update(Restaurant restaurant)
+        public void Update(Title title)
         {
-            _context.Entry(restaurant).State = EntityState.Modified;
+            _context.Entry(title).State = EntityState.Modified;
             _context.SaveChanges();
 
         }
 
-        public async Task UpdateAsync(Restaurant restaurant)
+        public async Task UpdateAsync(Title title)
         {
-            _context.Entry(restaurant).State = EntityState.Modified;
+            _context.Entry(title).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
         }
@@ -73,10 +73,10 @@ namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 
         #region D
 
-        public void Delete(Restaurant restaurant)
+        public void Delete(Title title)
         {
-            restaurant.IsDeleted = true;
-            Update(restaurant);
+            title.IsDeleted = true;
+            Update(title);
 
         }
 
@@ -88,10 +88,10 @@ namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 
         }
 
-        public async Task DeleteAsync(Restaurant restaurant)
+        public async Task DeleteAsync(Title title)
         {
-            restaurant.IsDeleted = true;
-            await UpdateAsync(restaurant);
+            title.IsDeleted = true;
+            await UpdateAsync(title);
 
         }
 
