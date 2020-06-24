@@ -32,7 +32,6 @@ namespace DataAccess.DataAccessObjects.MenuDataAccessObjects
         }
         #endregion
 
-
         #region R
 
         public Menu Read(Guid id)

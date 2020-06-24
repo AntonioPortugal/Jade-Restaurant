@@ -2,9 +2,7 @@
 using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess.DataAccessObjects.MenuDataAccessObjects
@@ -32,7 +30,6 @@ namespace DataAccess.DataAccessObjects.MenuDataAccessObjects
             await _context.SaveChangesAsync();
         }
         #endregion
-
 
         #region R
 

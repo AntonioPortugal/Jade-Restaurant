@@ -2,9 +2,7 @@
 using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
@@ -32,7 +30,6 @@ namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
             await _context.SaveChangesAsync();
         }
         #endregion
-
 
         #region R
 
@@ -99,6 +96,9 @@ namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
             await DeleteAsync(item);
 
         }
+
         #endregion
+
     }
+
 }
