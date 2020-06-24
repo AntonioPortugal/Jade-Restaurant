@@ -30,8 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccessObjects\UserDataAccessObjects\" />
-    <Folder Include="DataAccessObjects\RestaurantInfoDataAccessObjects\" />
+    <Folder Include="DataAccessObjects\RestaurantDataAccessObjects\" />
   </ItemGroup>
 
 </Project>

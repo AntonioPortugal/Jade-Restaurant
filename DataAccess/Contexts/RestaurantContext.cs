@@ -44,7 +44,7 @@ namespace DataAccess.Contexts
         public DbSet<Serving> MenuDishCourses { get; set; }
         public DbSet<Serving> Servings { get; set; }
         public DbSet<ClientRecord> ClientRecords { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Person> People { get; set; }
         public DbSet<StaffRecord> StaffRecords { get; set; }
         public DbSet<StaffTitle> StaffTitles { get; set; }
         public DbSet<Title> Titles { get; set; }
