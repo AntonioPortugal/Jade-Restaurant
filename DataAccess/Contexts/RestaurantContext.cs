@@ -1,11 +1,11 @@
-﻿using Data.MenuInfo;
-using Data.RestaurantInfo;
-using Data.UserInfo;
-using DataAccess.Properties;
+﻿using RECODME.RD.Jade.Data.MenuInfo;
+using RECODME.RD.Jade.Data.RestaurantInfo;
+using RECODME.RD.Jade.Data.UserInfo;
+using RECODME.RD.Jade.DataAccess.Properties.Resources;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Contexts
+namespace RECODME.RD.Jade.DataAccess.Contexts
 {
     public class RestaurantContext : IdentityDbContext
     {

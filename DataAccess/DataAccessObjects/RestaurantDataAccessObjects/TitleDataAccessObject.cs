@@ -1,5 +1,5 @@
-﻿using Data.RestaurantInfo;
-using DataAccess.Contexts;
+﻿using RECODME.RD.Jade.Data.RestaurantInfo;
+using RECODME.RD.Jade.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
+namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 {
     public class TitleDataAccessObject
     {

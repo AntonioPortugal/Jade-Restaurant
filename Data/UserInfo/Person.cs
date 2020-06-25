@@ -1,10 +1,10 @@
-﻿using Data.Base;
+﻿using RECODME.RD.Jade.Data.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.UserInfo
+namespace RECODME.RD.Jade.Data.UserInfo
 {
     public class Person : Entity
     {

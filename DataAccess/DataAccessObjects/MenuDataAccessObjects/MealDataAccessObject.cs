@@ -1,11 +1,11 @@
-﻿using Data.MenuInfo;
-using DataAccess.Contexts;
+﻿using RECODME.RD.Jade.Data.MenuInfo;
+using RECODME.RD.Jade.DataAccess.Contexts;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.DataAccessObjects.MenuDataAccessObjects
+namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects
 {
     public class MealDataAccessObject
     {

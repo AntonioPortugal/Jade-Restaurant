@@ -1,9 +1,9 @@
-﻿using Data.Base;
+﻿using RECODME.RD.Jade.Data.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Data.RestaurantInfo
+namespace RECODME.RD.Jade.Data.RestaurantInfo
 {
     public class Title : NamedEntity
     {

@@ -1,11 +1,11 @@
-﻿using Data.RestaurantInfo;
-using DataAccess.Contexts;
+﻿using RECODME.RD.Jade.Data.RestaurantInfo;
+using RECODME.RD.Jade.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataAccess.DataAccessObjects.RestaurantDataAccessObjects
+namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 {
     public class BookingDataAccessObject
     {
