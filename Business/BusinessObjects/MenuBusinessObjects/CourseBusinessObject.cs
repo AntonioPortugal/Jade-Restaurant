@@ -1,11 +1,11 @@
-﻿using Business.OperationResults;
+﻿using RECODME.RD.Jade.Business.OperationResults;
 using RECODME.RD.Jade.Data.MenuInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects;
 using System;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace Business.BusinessObjects.MenuBusinessObjects
+namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
 {
     public class CourseBusinessObject
     {

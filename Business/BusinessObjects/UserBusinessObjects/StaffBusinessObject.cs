@@ -1,11 +1,11 @@
-﻿using Business.OperationResults;
+﻿using RECODME.RD.Jade.Business.OperationResults;
 using RECODME.RD.Jade.Data.UserInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.UserDataAccessObjects;
 using System;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace Business.BusinessObjects.UserBusinessObjects
+namespace RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects
 {
     public class StaffBusinessObject
     {

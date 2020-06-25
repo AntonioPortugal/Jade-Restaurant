@@ -1,4 +1,4 @@
-﻿namespace Business.OperationResults
+﻿namespace RECODME.RD.Jade.Business.OperationResults
 {
     public class OperationResult<T> : OperationResult
     {
