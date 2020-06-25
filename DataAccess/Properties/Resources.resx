@@ -124,7 +124,7 @@
     <value>Server=RECODME-AMARTIM\SQLEXPRESS;Database=JadeRestaurante;Trusted_Connection=true;</value>
   </data>
   <data name="ConnectionStringDiogo" xml:space="preserve">
-    <value />
+    <value>Server=RECODME-DREIS\SQLEXPRESS;Database=JadeRestaurante;Trusted_Connection=true;</value>
   </data>
   <data name="ConnectionStringEdson" xml:space="preserve">
     <value>Server=RECODME-EDSONC\SQLEXPRESS;Database=JadeRestaurante;Trusted_Connection=true</value>

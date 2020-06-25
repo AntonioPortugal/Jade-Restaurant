@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Contexts
 {
-    class RestaurantContext : IdentityDbContext
+    public class RestaurantContext : IdentityDbContext
     {
         public RestaurantContext() : base()
         {

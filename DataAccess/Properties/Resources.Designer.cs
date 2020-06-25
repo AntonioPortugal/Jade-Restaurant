@@ -79,7 +79,7 @@ namespace DataAccess.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Server=RECODME-DREIS\SQLEXPRESS;Database=JadeRestaurante;Trusted_Connection=true;.
         /// </summary>
         public static string ConnectionStringDiogo {
             get {
