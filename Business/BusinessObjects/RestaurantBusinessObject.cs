@@ -1,6 +1,6 @@
 ﻿using Business.OperationResults;
-using Data.RestaurantInfo;
-using DataAccess.DataAccessObjects.RestaurantDataAccessObjects;
+using RECODME.RD.Jade.Data.RestaurantInfo;
+using RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects;
 using System;
 using System.Threading.Tasks;
 using System.Transactions;

@@ -36,16 +36,18 @@ namespace RECODME.RD.Jade.Data.UserInfo
 
         public virtual ICollection<Booking> Bookings { get; set; }
 
-        public ClientRecord (DateTime registrationDate, Guid personId, Guid restaurantId)
+
+        public ClientRecord (DateTime registerDate, Guid personId, Guid restaurantId)
         {
-            _registerDate = registrationDate;
+            _registerDate = registerDate;
             PersonId = personId;
             RestaurantId = restaurantId;
 
         }
-        public ClientRecord(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime registrationDate, Guid personId, Guid restaurantId) : base(id, createdAt, updatedAt, isDeleted)
+
+        public ClientRecord(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, DateTime registerDate, Guid personId, Guid restaurantId) : base(id, createdAt, updatedAt, isDeleted)
         {
-            _registerDate = registrationDate;
+            _registerDate = registerDate;
             PersonId = personId;
             RestaurantId = restaurantId;
         }
