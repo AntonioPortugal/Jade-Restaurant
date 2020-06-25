@@ -1,9 +1,9 @@
 ﻿using RECODME.RD.Jade.Data.MenuInfo;
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.Data.UserInfo;
-using RECODME.RD.Jade.DataAccess.Properties.Resources;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RECODME.RD.Jade.DataAccess.Properties;
 
 namespace RECODME.RD.Jade.DataAccess.Contexts
 {
