@@ -272,7 +272,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects
 
         #region L
 
-        public OperationResult Read()
+        public OperationResult List()
         {
             try
             {
@@ -295,7 +295,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects
             }
 
         }
-        public async Task<OperationResult> ListAsync(StaffRecord item)
+        public async Task<OperationResult> ListAsync()
         {
             try
             {
