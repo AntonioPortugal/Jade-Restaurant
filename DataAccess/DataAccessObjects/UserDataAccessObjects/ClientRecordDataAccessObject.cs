@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.UserDataAccessObjects
 {
@@ -104,6 +105,16 @@ namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.UserDataAccessObjects
 
         #endregion
 
+        #region List
+        public List<ClientRecord> List()
+        {
+            return _context.Set<ClientRecord>().ToList();
+        }
+        public async Task<List<ClientRecord>> ListAsync()
+        {
+            return await _context.Set<ClientRecord>().ToListAsync();
+        }
+        #endregion
     }
 
 }

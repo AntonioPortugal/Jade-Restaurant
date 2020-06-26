@@ -104,5 +104,16 @@ namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjec
         }
 
         #endregion
+
+        #region List
+        public List<Title> List()
+        {
+            return _context.Set<Title>().ToList();
+        }
+        public async Task<List<Title>> ListAsync()
+        {
+            return await _context.Set<Title>().ToListAsync();
+        }
+        #endregion
     }
 }
