@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects
 {
-    public class MenuDataAccessObjects
+    public class MenuDataAccessObject
     {
 
         private RestaurantContext _context;
 
-        public MenuDataAccessObjects()
+        public MenuDataAccessObject()
         {
             _context = new RestaurantContext();
         }
