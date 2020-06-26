@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects
 {
@@ -99,6 +100,17 @@ namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjec
 
         #endregion
 
-    }
+        #region List
 
+        public List<Booking> List()
+        {
+            return _context.Set<Booking>().ToList();
+        }
+        public async Task<List<Booking>> ListAsync()
+        {
+            return await _context.Set<Booking>().ToListAsync();
+        }
+
+        #endregion
+    }
 }

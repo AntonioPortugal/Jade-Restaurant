@@ -270,6 +270,53 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
 
         #endregion
 
+        #region List
+
+        public OperationResult List()
+        {
+            try
+            {
+                var transactionOptions = new TransactionOptions
+                {
+                    IsolationLevel = IsolationLevel.ReadCommitted,
+                    Timeout = TimeSpan.FromSeconds(30)
+                };
+
+                var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
+                _dao.List();
+                transactionScope.Complete();
+
+                return new OperationResult() { Success = true };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult() { Success = false, Exception = e };
+            }
+
+        }
+        public async Task<OperationResult> ListAsync()
+        {
+            try
+            {
+                var transactionOptions = new TransactionOptions
+                {
+                    IsolationLevel = IsolationLevel.ReadCommitted,
+                    Timeout = TimeSpan.FromSeconds(30)
+                };
+
+                var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
+                await _dao.ListAsync();
+                transactionScope.Complete();
+
+                return new OperationResult() { Success = true };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult() { Success = false, Exception = e };
+            }
+        }
+
+        #endregion
     }
 
 }
