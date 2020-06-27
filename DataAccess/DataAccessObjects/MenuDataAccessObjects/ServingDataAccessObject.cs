@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects
 {
@@ -97,6 +98,21 @@ namespace RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects
 
         }
         #endregion
+
+
+        #region List
+
+        public List<Serving> List()
+        {
+            return _context.Set<Serving>().ToList();
+        }
+        public async Task<List<Serving>> ListAsync()
+        {
+            return await _context.Set<Serving>().ToListAsync();
+        }
+
+        #endregion
+
 
     }
 }
