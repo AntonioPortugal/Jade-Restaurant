@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{5962EF35-7F25-4902-8A05-5F4F65BAB081}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "App\ConsoleApp.csproj", "{EFBC5D0A-0DE4-4F0D-A4C4-7E5909808E5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "App\ConsoleApp.csproj", "{EFBC5D0A-0DE4-4F0D-A4C4-7E5909808E5D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5962EF35-7F25-4902-8A05-5F4F65BAB081} = {5962EF35-7F25-4902-8A05-5F4F65BAB081}
 		{8F33FBFB-2036-4847-A507-F78ED2DE8849} = {8F33FBFB-2036-4847-A507-F78ED2DE8849}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{4375AEED-FC52-442A-944E-4754E2D32A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{4375AEED-FC52-442A-944E-4754E2D32A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
