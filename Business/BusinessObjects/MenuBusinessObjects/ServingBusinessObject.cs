@@ -23,15 +23,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Create(item);
-                //transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -46,15 +38,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                //var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.CreateAsync(item);
-                //transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -127,15 +111,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Update(item);
-                //transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -150,15 +126,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.UpdateAsync(item);
-                //transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -178,15 +146,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Delete(item);
-                // transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -202,15 +162,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.DeleteAsync(id);
-                //transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -225,15 +177,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Delete(id);
-                //transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -248,15 +192,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         {
             try
             {
-                var transactionOptions = new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-
-                };
-                // var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.DeleteAsync(item);
-                // transactionScope.Complete();
                 return new OperationResult() { Success = true };
 
             }
@@ -270,8 +206,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
 
         #endregion
 
-
-        #region
+        #region L
 
 
         public OperationResult List()
