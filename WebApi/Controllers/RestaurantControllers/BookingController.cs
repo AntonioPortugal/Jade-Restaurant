@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects;
 using RECODME.RD.Jade.Data.RestaurantInfo;
-using WebApi.Models.RestaurantModelViews;
+using RECODME.RD.Jade.WebApi.Models.RestaurantModelViews;
 
-namespace WebApi.Controllers.RestaurantControllers
+namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApi.Models;
+using RECODME.RD.Jade.WebApi.Models;
 
-namespace WebApi.Controllers
+namespace RECODME.RD.Jade.WebApi.Controllers
 {
     public class HomeController : Controller
     {

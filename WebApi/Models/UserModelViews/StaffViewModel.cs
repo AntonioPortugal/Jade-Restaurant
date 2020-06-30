@@ -1,7 +1,7 @@
 ﻿using RECODME.RD.Jade.Data.UserInfo;
 using System;
 
-namespace WebApi.Models.UserModelViews
+namespace RECODME.RD.Jade.WebApi.Models.UserModelViews
 {
     public class StaffViewModel
     {

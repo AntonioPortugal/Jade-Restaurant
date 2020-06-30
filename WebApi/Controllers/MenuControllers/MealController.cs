@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using WebApi.Models.MenuModelViews;
+using RECODME.RD.Jade.WebApi.Models.MenuModelViews;
 
-namespace WebApi.Controllers.MenuControllers
+namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
     [Route("api/[controller]")]
     [ApiController]

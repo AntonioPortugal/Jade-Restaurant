@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.Models
+namespace RECODME.RD.Jade.WebApi.Models
 {
     public class ErrorViewModel
     {

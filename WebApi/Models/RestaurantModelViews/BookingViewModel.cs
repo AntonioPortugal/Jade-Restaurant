@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.Models.RestaurantModelViews
+namespace RECODME.RD.Jade.WebApi.Models.RestaurantModelViews
 {
     public class BookingViewModel
     {

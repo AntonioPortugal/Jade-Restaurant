@@ -3,9 +3,9 @@ using RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using WebApi.Models.UserModelViews;
+using RECODME.RD.Jade.WebApi.Models.UserModelViews;
 
-namespace WebApi.Controllers.UserControllers
+namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
 {
     [Route("api/[controller]")]
     [ApiController]

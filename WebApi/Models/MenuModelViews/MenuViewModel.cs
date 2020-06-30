@@ -2,7 +2,7 @@
 using System;
 
 
-namespace WebApi.Models.MenuViewModel
+namespace RECODME.RD.Jade.WebApi.Models.MenuViewModel
 {
 	public class MenuViewModel
 	{

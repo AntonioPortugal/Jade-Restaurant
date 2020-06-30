@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects;
-using WebApi.Models.MenuModelViews;
-using WebApi.Models.RestaurantModelViews;
+using RECODME.RD.Jade.WebApi.Models.MenuModelViews;
+using RECODME.RD.Jade.WebApi.Models.RestaurantModelViews;
 
-namespace WebApi.Controllers.MenuControllers
+namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
     [Route("api/[controller]")]
     [ApiController]
