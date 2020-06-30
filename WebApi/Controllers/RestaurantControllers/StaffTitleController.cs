@@ -20,7 +20,7 @@ namespace WebApi.Controllers.StaffTitleControllers
         [HttpPost]
         public ActionResult Create([FromBody]StaffTitleViewModel vm)
         {
-            var st = new StaffTitle(vm.Id, DateTime.Now, DateTime.Now, false, vm.StartDate, vm.EndDate, vm.TitleId, vm.StaffRecordId);
+            var st = vm.ToStaffTitle();
             var res = _bo.Create(st);
             return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
         }

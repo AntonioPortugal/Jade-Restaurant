@@ -20,7 +20,7 @@ namespace WebApi.Controllers.RestaurantControllers
         [HttpPost]
         public ActionResult Create([FromBody]RestaurantViewModel vm)
         {
-            var rt = new Restaurant(vm.Id, DateTime.Now, DateTime.Now, false, vm.Name, vm.Address, vm.OpeningHours, vm.ClosingHours, vm.ClosingDays, vm.TableCount);
+            var rt = vm.ToRestaurant();
             var res = _bo.Create(rt);
             return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
         }
