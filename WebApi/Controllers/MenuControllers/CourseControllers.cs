@@ -51,13 +51,16 @@ namespace WebApi.Controllers.MenuControllers
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody]CourseViewModel bk)
+        public ActionResult Update([FromBody]CourseViewModel ds)
         {
-            var currentResult = _bo.Read(bk.Id);
+            var currentResult = _bo.Read(ds.Id);
             if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
+            if (current.Name == ds.Name) return new ObjectResult(HttpStatusCode.NotModified);
+
+            if (current.Name != ds.Name) current.Name = ds.Name;
 
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
