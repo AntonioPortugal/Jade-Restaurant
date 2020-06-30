@@ -6,7 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Controllers\MenuControllers\" />
-    <Folder Include="Models\MenuModelViews\" />
+    <Folder Include="Controllers\UserControllers\" />
+    <Folder Include="Models\UserModelViews\" />
   </ItemGroup>
 
   <ItemGroup>
