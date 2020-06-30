@@ -9,14 +9,13 @@ namespace WebApi.Models.RestaurantModelViews
     public class BookingViewModel
     {
         public Guid Id { get; set; }
-        public bool IsDeleted { get; set; }
         public DateTime Date { get; set; }
         public Guid ClientRecordId { get; set; }
 
 
-        public Booking ToDietaryRestriction()
+        public Booking ToBooking()
         {
-            return new Booking(Id, DateTime.UtcNow, DateTime.UtcNow, IsDeleted, Date, ClientRecordId);
+            return new Booking(Id, DateTime.UtcNow, DateTime.UtcNow, false, Date, ClientRecordId);
         }
 
         public static BookingViewModel Parse(Booking booking)
@@ -24,7 +23,6 @@ namespace WebApi.Models.RestaurantModelViews
             return new BookingViewModel()
             {
                 Id = booking.Id,
-                IsDeleted = booking.IsDeleted,
                 Date = booking.Date,
                 ClientRecordId = booking.ClientRecordId
             };

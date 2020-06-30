@@ -9,15 +9,14 @@ namespace WebApi.Models.RestaurantModelViews
     public class StaffTitleViewModel
     {
         public Guid Id { get; set; }
-        public bool IsDeleted { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public Guid TitleId { get; set; }
         public Guid StaffRecordId { get; set; }
 
-        public StaffTitle ToDietaryRestriction()
+        public StaffTitle ToStaffTitle()
         {
-            return new StaffTitle(Id, DateTime.UtcNow, DateTime.UtcNow, IsDeleted, StartDate, EndDate, TitleId, StaffRecordId);
+            return new StaffTitle(Id, DateTime.UtcNow, DateTime.UtcNow, false, StartDate, EndDate, TitleId, StaffRecordId);
         }
 
         public static StaffTitleViewModel Parse(StaffTitle staffTitle)
@@ -25,7 +24,6 @@ namespace WebApi.Models.RestaurantModelViews
             return new StaffTitleViewModel()
             {
                 Id = staffTitle.Id,
-                IsDeleted = staffTitle.IsDeleted,
                 StartDate = staffTitle.StartDate,
                 EndDate = staffTitle.EndDate,
                 TitleId = staffTitle.TitleId,

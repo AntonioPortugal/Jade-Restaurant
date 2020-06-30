@@ -9,7 +9,6 @@ namespace WebApi.Models.RestaurantModelViews
     public class RestaurantViewModel
     {
         public Guid Id { get; set; }
-        public bool IsDeleted { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string OpeningHours { get; set; }
@@ -17,9 +16,9 @@ namespace WebApi.Models.RestaurantModelViews
         public string ClosingDays { get; set; }
         public int TableCount { get; set; }
 
-        public Restaurant ToDietaryRestriction()
+        public Restaurant ToRestaurant()
         {
-            return new Restaurant(Id, DateTime.UtcNow, DateTime.UtcNow, IsDeleted, Name, Address, OpeningHours, ClosingHours, ClosingDays, TableCount);
+            return new Restaurant(Id, DateTime.UtcNow, DateTime.UtcNow, false, Name, Address, OpeningHours, ClosingHours, ClosingDays, TableCount);
         }
 
         public static RestaurantViewModel Parse(Restaurant restaurant)
@@ -27,7 +26,6 @@ namespace WebApi.Models.RestaurantModelViews
             return new RestaurantViewModel()
             {
                 Id = restaurant.Id,
-                IsDeleted = restaurant.IsDeleted,
                 Name = restaurant.Name,
                 Address = restaurant.Address,
                 OpeningHours = restaurant.OpeningHours,

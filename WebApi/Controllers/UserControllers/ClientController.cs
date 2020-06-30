@@ -1,71 +1,68 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects;
-using RECODME.RD.Jade.Data.RestaurantInfo;
-using WebApi.Models.RestaurantModelViews;
+using WebApi.Models.UserModelViews;
 
-namespace WebApi.Controllers.RestaurantControllers
+namespace WebApi.Controllers.UserControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingController : ControllerBase
+    public class ClientRecordController : ControllerBase
     {
-        private BookingBusinessObject _bo = new BookingBusinessObject();
+        private ClientBusinessObject _bo = new ClientBusinessObject();
 
         [HttpPost]
-        public ActionResult Create([FromBody]BookingViewModel vm)
+        public ActionResult Create([FromBody]ClientViewModel vm)
         {
-            var bk = vm.ToBooking();
-            var res = _bo.Create(bk);
+            var rt = vm.ToClient();
+            var res = _bo.Create(rt);
             return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<BookingViewModel> Get(Guid id)
+        public ActionResult<ClientViewModel> Get(Guid id)
         {
             var res = _bo.Read(id);
             if (res.Success)
             {
                 if (res.Result == null) return NotFound();
-                var vm = BookingViewModel.Parse(res.Result);
+                var vm = ClientViewModel.Parse(res.Result);
                 return vm;
             }
             else return new ObjectResult(HttpStatusCode.InternalServerError);
         }
 
         [HttpGet]
-        public ActionResult<List<BookingViewModel>> List()
+        public ActionResult<List<ClientViewModel>> List()
         {
             var res = _bo.List();
             if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
-            var list = new List<BookingViewModel>();
+            var list = new List<ClientViewModel>();
             foreach (var item in res.Result)
             {
-                list.Add(BookingViewModel.Parse(item));
+                list.Add(ClientViewModel.Parse(item));
             }
             return list;
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody]BookingViewModel bk)
+        public ActionResult Update([FromBody]ClientViewModel rt)
         {
-            var currentResult = _bo.Read(bk.Id);
+            var currentResult = _bo.Read(rt.Id);
             if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Date == bk.Date) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.RegisterDate == rt.RegisterDate) return new ObjectResult(HttpStatusCode.NotModified);
 
-            if (current.Date != bk.Date) current.Date = bk.Date;
+            if (current.RegisterDate != rt.RegisterDate) current.RegisterDate = rt.RegisterDate;
 
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
             return Ok();
+
         }
 
         [HttpDelete("{id}")]
@@ -74,6 +71,9 @@ namespace WebApi.Controllers.RestaurantControllers
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
             return new ObjectResult(HttpStatusCode.InternalServerError);
+
         }
+
     }
+
 }
