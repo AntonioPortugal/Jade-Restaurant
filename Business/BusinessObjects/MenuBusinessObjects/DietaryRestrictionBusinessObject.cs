@@ -2,6 +2,7 @@
 using RECODME.RD.Jade.Data.MenuInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -209,7 +210,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         #region L
 
 
-        public OperationResult List()
+        public OperationResult<List<DietaryRestriction>> List()
         {
             try
             {
@@ -223,15 +224,15 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
                 _dao.List();
                 transactionScope.Complete();
 
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<DietaryRestriction>>() { Success = true };
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<DietaryRestriction>>() { Success = false, Exception = e };
             }
 
         }
-        public async Task<OperationResult> ListAsync()
+        public async Task<OperationResult<List<DietaryRestriction>>> ListAsync()
         {
             try
             {
@@ -245,12 +246,15 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
                 await _dao.ListAsync();
                 transactionScope.Complete();
 
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<DietaryRestriction>>() { Success = true };
+
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<DietaryRestriction>>() { Success = false, Exception = e };
+
             }
+
         }
 
         #endregion

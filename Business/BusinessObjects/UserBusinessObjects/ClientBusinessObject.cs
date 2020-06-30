@@ -2,6 +2,7 @@
 using RECODME.RD.Jade.Data.UserInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.UserDataAccessObjects;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -204,7 +205,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects
 
         #region L
 
-        public OperationResult List()
+        public OperationResult<List<ClientRecord>> List()
         {
             try
             {
@@ -217,17 +218,17 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.List();
                 transactionScope.Complete();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<ClientRecord>>() { Success = true };
 
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<ClientRecord>>() { Success = false, Exception = e };
 
             }
 
         }
-        public async Task<OperationResult> ListAsync()
+        public async Task<OperationResult<List<ClientRecord>>> ListAsync()
         {
             try
             {
@@ -240,12 +241,12 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.UserBusinessObjects
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.ListAsync();
                 transactionScope.Complete();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<ClientRecord>>() { Success = true };
 
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<ClientRecord>>() { Success = false, Exception = e };
 
             }
 
