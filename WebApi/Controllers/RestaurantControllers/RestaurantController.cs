@@ -20,7 +20,7 @@ namespace WebApi.Controllers.RestaurantControllers
         [HttpPost]
         public ActionResult Create([FromBody]RestaurantViewModel vm)
         {
-            var rt = new Restaurant(vm.Id, DateTime.Now, DateTime.Now, vm.IsDeleted, vm.Name, vm.Address, vm.OpeningHours, vm.ClosingHours, vm.ClosingDays, vm.TableCount);
+            var rt = new Restaurant(vm.Id, DateTime.Now, DateTime.Now, false, vm.Name, vm.Address, vm.OpeningHours, vm.ClosingHours, vm.ClosingDays, vm.TableCount);
             var res = _bo.Create(rt);
             return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
         }
@@ -59,7 +59,7 @@ namespace WebApi.Controllers.RestaurantControllers
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Name == rt.Name && current.IsDeleted == rt.IsDeleted) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name == rt.Name && current.Address == rt.Address && current.OpeningHours == rt.OpeningHours && current.ClosingHours == rt.ClosingHours && current.ClosingDays == rt.ClosingDays && current.TableCount == rt.TableCount) return new ObjectResult(HttpStatusCode.NotModified);
 
             if (current.Name != rt.Name) current.Name = rt.Name;
             if (current.Address != rt.Address) current.Address = rt.Address;
@@ -68,7 +68,6 @@ namespace WebApi.Controllers.RestaurantControllers
             if (current.ClosingDays != rt.ClosingDays) current.ClosingDays = rt.ClosingDays;
             if (current.TableCount != rt.TableCount) current.TableCount = rt.TableCount;
 
-            if (current.IsDeleted != rt.IsDeleted) current.IsDeleted = rt.IsDeleted;
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
             return Ok();

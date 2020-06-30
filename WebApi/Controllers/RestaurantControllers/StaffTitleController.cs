@@ -9,59 +9,62 @@ using RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects;
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using WebApi.Models.RestaurantModelViews;
 
-namespace WebApi.Controllers.RestaurantControllers
+namespace WebApi.Controllers.StaffTitleControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingController : ControllerBase
+    public class StaffTitleController : ControllerBase
     {
-        private BookingBusinessObject _bo = new BookingBusinessObject();
+        private StaffTitleBusinessObject _bo = new StaffTitleBusinessObject();
 
         [HttpPost]
-        public ActionResult Create([FromBody]BookingViewModel vm)
+        public ActionResult Create([FromBody]StaffTitleViewModel vm)
         {
-            var bk = new Booking(vm.Id, DateTime.Now, DateTime.Now, false, vm.Date, vm.ClientRecordId);
-            var res = _bo.Create(bk);
+            var st = new StaffTitle(vm.Id, DateTime.Now, DateTime.Now, false, vm.StartDate, vm.EndDate, vm.TitleId, vm.StaffRecordId);
+            var res = _bo.Create(st);
             return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<BookingViewModel> Get(Guid id)
+        public ActionResult<StaffTitleViewModel> Get(Guid id)
         {
             var res = _bo.Read(id);
             if (res.Success)
             {
                 if (res.Result == null) return NotFound();
-                var vm = BookingViewModel.Parse(res.Result);
+                var vm = StaffTitleViewModel.Parse(res.Result);
                 return vm;
             }
             else return new ObjectResult(HttpStatusCode.InternalServerError);
         }
 
         [HttpGet]
-        public ActionResult<List<BookingViewModel>> List()
+        public ActionResult<List<StaffTitleViewModel>> List()
         {
             var res = _bo.List();
             if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
-            var list = new List<BookingViewModel>();
+            var list = new List<StaffTitleViewModel>();
             foreach (var item in res.Result)
             {
-                list.Add(BookingViewModel.Parse(item));
+                list.Add(StaffTitleViewModel.Parse(item));
             }
             return list;
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody]BookingViewModel bk)
+        public ActionResult Update([FromBody]StaffTitleViewModel st)
         {
-            var currentResult = _bo.Read(bk.Id);
+            var currentResult = _bo.Read(st.Id);
             if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Date == bk.Date) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.StartDate == st.StartDate && current.EndDate == st.EndDate) return new ObjectResult(HttpStatusCode.NotModified);
 
-            if (current.Date != bk.Date) current.Date = bk.Date;
+            if (current.StartDate != st.StartDate) current.StartDate = st.StartDate;
+            if (current.EndDate != st.EndDate) current.EndDate = st.EndDate;
+            if (current.TitleId != st.TitleId) current.TitleId = st.TitleId;
+            if (current.StaffRecordId != st.StaffRecordId) current.StaffRecordId = st.StaffRecordId;
 
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
