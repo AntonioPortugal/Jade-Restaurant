@@ -111,7 +111,7 @@ namespace RECODME.RD.Jade.Data.UserInfo
             UserId = userId;
         }
 
-        protected Person(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate, Guid userId) : base(id, createdAt, updatedAt, isDeleted)
+        public Person(Guid id, DateTime createdAt, DateTime updatedAt, bool isDeleted, long vatNumber, string firstName, string lastName, long phoneNumber, DateTime birthDate, Guid userId) : base(id, createdAt, updatedAt, isDeleted)
         {
             _vatNumber = vatNumber;
             _firstName = firstName;
