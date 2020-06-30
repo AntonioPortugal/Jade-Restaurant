@@ -7,14 +7,13 @@ namespace WebApi.Models.MenuViewModel
 	public class MenuViewModel
 	{
 		public Guid Id { get; set; }
-		public bool IsDeleted { get; set; }
 		public DateTime Date { get; set; }
 		public Guid MealIdId { get; set; }
 		public Guid RestaurantId { get; set; }
 
-		public Menu ToDietaryRestriction()
+		public Menu ToMenu() 
 		{
-			return new Menu(Id, DateTime.UtcNow, DateTime.UtcNow, IsDeleted, Date, RestaurantId, MealIdId);
+			return new Menu(Id, DateTime.UtcNow, DateTime.UtcNow, false, Date, RestaurantId, MealIdId);
 		}
 
 
@@ -23,7 +22,6 @@ namespace WebApi.Models.MenuViewModel
 			return new MenuViewModel()
 			{
 				Id = menu.Id,
-				IsDeleted = menu.IsDeleted,
 				Date = menu.Date,
 				RestaurantId = menu.RestaurantId,
 				MealIdId = menu.MealId,
