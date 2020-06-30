@@ -2,6 +2,7 @@
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -208,29 +209,29 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
 
         #region L
 
-        public OperationResult List()
+        public OperationResult<List<StaffTitle>> List()
         {
             try
             {
                 _dao.List();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<StaffTitle>>() { Success = true };
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<StaffTitle>>() { Success = false, Exception = e };
             }
 
         }
-        public async Task<OperationResult> ListAsync()
+        public async Task<OperationResult<List<StaffTitle>>> ListAsync()
         {
             try
             {
                 await _dao.ListAsync();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<StaffTitle>>() { Success = true };
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<StaffTitle>>() { Success = false, Exception = e };
             }
         }
 
