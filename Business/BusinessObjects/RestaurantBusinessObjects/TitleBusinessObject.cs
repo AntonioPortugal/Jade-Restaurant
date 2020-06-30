@@ -2,6 +2,7 @@
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -208,7 +209,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
 
         #region L
 
-        public OperationResult List()
+        public OperationResult<List<Title>> List()
         {
             try
             {
@@ -221,17 +222,17 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.List();
                 transactionScope.Complete();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<Title>>() { Success = true };
 
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<Title>>() { Success = false, Exception = e };
 
             }
 
         }
-        public async Task<OperationResult> ListAsync()
+        public async Task<OperationResult<List<Title>>> ListAsync()
         {
             try
             {
@@ -244,12 +245,12 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.ListAsync();
                 transactionScope.Complete();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<Title>>() { Success = true };
 
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<Title>>() { Success = false, Exception = e };
 
             }
 

@@ -4,6 +4,7 @@ using RECODME.RD.Jade.Business.OperationResults;
 using RECODME.RD.Jade.Data.MenuInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.MenuDataAccessObjects;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -209,7 +210,7 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
         #endregion
 
         #region L
-        public OperationResult List()
+        public OperationResult<List<Menu>> List()
         {
             try
             {
@@ -222,17 +223,17 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.List();
                 transactionScope.Complete();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<Menu>>() { Success = true };
 
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<Menu>>() { Success = false, Exception = e };
 
             }
 
         }
-        public async Task<OperationResult> ListAsync()
+        public async Task<OperationResult<List<Menu>>> ListAsync()
         {
             try
             {
@@ -245,17 +246,19 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.ListAsync();
                 transactionScope.Complete();
-                return new OperationResult() { Success = true };
+                return new OperationResult<List<Menu>>() { Success = true };
 
             }
             catch (Exception e)
             {
-                return new OperationResult() { Success = false, Exception = e };
+                return new OperationResult<List<Menu>>() { Success = false, Exception = e };
 
             }
 
         }
 
 #endregion
+
     }
+
 }
