@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects;
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.WebApi.Models.RestaurantModelViews;
+using WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestaurantController : ControllerBase
+    public class RestaurantController : BaseController
     {
         private RestaurantBusinessObject _bo = new RestaurantBusinessObject();
 
@@ -22,7 +23,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
         {
             var rt = vm.ToRestaurant();
             var res = _bo.Create(rt);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError());
         }
 
         [HttpGet("{id}")]
