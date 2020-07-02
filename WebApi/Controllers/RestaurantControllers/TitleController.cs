@@ -13,7 +13,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TitleController : ControllerBase
+    public class TitleController : BaseController
     {
         private TitleBusinessObject _bo = new TitleBusinessObject();
 
@@ -22,7 +22,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
         {
             var rt = vm.ToTitle();
             var res = _bo.Create(rt);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError());
         }
 
         [HttpGet("{id}")]
@@ -35,14 +35,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
                 var vm = TitleViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<TitleViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
             var list = new List<TitleViewModel>();
             foreach (var item in res.Result)
             {
@@ -55,18 +55,18 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
         public ActionResult Update([FromBody]TitleViewModel rt)
         {
             var currentResult = _bo.Read(rt.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Name == rt.Name && current.Position == rt.Position && current.Description == rt.Description) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name == rt.Name && current.Position == rt.Position && current.Description == rt.Description) return NotModified();
 
             if (current.Name != rt.Name) current.Name = rt.Name;
             if (current.Position != rt.Position) current.Position = rt.Position;
             if (current.Description != rt.Description) current.Description = rt.Description;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
             return Ok();
         }
 
@@ -75,7 +75,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
         {
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
     }
 }

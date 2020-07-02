@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace WebApi.Controllers
+namespace RECODME.RD.Jade.WebApi.Controllers
 {
     public class BaseController : ControllerBase
     {

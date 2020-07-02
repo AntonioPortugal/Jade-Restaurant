@@ -11,7 +11,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServingControllers : ControllerBase
+    public class ServingControllers : BaseController
     {
 
         private ServingBusinessObject _bo = new ServingBusinessObject();
@@ -21,7 +21,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         {
             var rt = vm.ToServing();
             var res = _bo.Create(rt);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError());
         }
 
         [HttpGet("{id}")]
@@ -34,14 +34,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
                 var vm = ServingViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<ServingViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
             var list = new List<ServingViewModel>();
             foreach (var item in res.Result)
             {
@@ -54,13 +54,12 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         public ActionResult Update([FromBody]ServingViewModel bk)
         {
             var currentResult = _bo.Read(bk.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
             return Ok();
         }
 
@@ -69,7 +68,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         {
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
     }
 }

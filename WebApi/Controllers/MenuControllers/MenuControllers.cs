@@ -11,7 +11,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenuControllers : ControllerBase
+    public class MenuControllers : BaseController
     {
         private MenuBusinessObject _bo = new MenuBusinessObject();
 
@@ -21,7 +21,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         {
             var rt = vm.ToMenu();
             var res = _bo.Create(rt);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError());
         }
 
         [HttpGet("{id}")]
@@ -34,14 +34,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
                 var vm = MenuViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<MenuViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
             var list = new List<MenuViewModel>();
             foreach (var item in res.Result)
             {
@@ -54,16 +54,16 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         public ActionResult Update([FromBody]MenuViewModel bk)
         {
             var currentResult = _bo.Read(bk.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Date == bk.Date) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Date == bk.Date) return NotModified();
 
             if (current.Date != bk.Date) current.Date = bk.Date;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
             return Ok();
         }
 
@@ -72,7 +72,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         {
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
 
 
