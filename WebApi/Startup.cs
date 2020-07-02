@@ -73,6 +73,8 @@ namespace RECODME.RD.Jade.WebApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
