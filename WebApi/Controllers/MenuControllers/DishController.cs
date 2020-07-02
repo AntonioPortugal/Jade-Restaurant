@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects;
 using RECODME.RD.Jade.WebApi.Models.MenuModelViews;
-using RECODME.RD.Jade.WebApi.Models.RestaurantModelViews;
-using RECODME.RD.Jade.WebApi.WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
