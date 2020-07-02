@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects;
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.WebApi.Models.RestaurantModelViews;
-using RECODME.RD.Jade.WebApi.WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
 {

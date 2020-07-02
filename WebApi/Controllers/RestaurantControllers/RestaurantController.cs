@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects;
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.WebApi.Models.RestaurantModelViews;
-using WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
 {
@@ -36,14 +35,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
                 var vm = RestaurantViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<RestaurantViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
             var list = new List<RestaurantViewModel>();
             foreach (var item in res.Result)
             {
@@ -56,11 +55,11 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
         public ActionResult Update([FromBody]RestaurantViewModel rt)
         {
             var currentResult = _bo.Read(rt.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Name == rt.Name && current.Address == rt.Address && current.OpeningHours == rt.OpeningHours && current.ClosingHours == rt.ClosingHours && current.ClosingDays == rt.ClosingDays && current.TableCount == rt.TableCount) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name == rt.Name && current.Address == rt.Address && current.OpeningHours == rt.OpeningHours && current.ClosingHours == rt.ClosingHours && current.ClosingDays == rt.ClosingDays && current.TableCount == rt.TableCount) return NotModified();
 
             if (current.Name != rt.Name) current.Name = rt.Name;
             if (current.Address != rt.Address) current.Address = rt.Address;
@@ -70,7 +69,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
             if (current.TableCount != rt.TableCount) current.TableCount = rt.TableCount;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
             return Ok();
         }
 
@@ -79,7 +78,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.RestaurantControllers
         {
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
     }
 }
