@@ -2,16 +2,13 @@
 using RECODME.RD.Jade.Business.BusinessObjects.MenuBusinessObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using RECODME.RD.Jade.WebApi.Models.MenuModelViews;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DietaryRestrictionController : ControllerBase
+    public class DietaryRestrictionController : BaseController
     {
         private DietaryRestrictionBusinessObject _bo = new DietaryRestrictionBusinessObject();
 
@@ -21,7 +18,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
             var dr = vm.ToDietaryRestriction();
             var res = _bo.Create(dr);
 
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError());
         }
 
         [HttpGet("{id}")]
@@ -35,14 +32,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
                 var vm = DietaryRestrictionViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<DietaryRestrictionViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
 
             var list = new List<DietaryRestrictionViewModel>();
             foreach (var item in res.Result)
@@ -57,17 +54,17 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         public ActionResult Update([FromBody]DietaryRestrictionViewModel dr)
         {
             var currentResult = _bo.Read(dr.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
 
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Name == dr.Name) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name == dr.Name) return NotModified();
 
             if (current.Name != dr.Name) current.Name = dr.Name;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
 
             return Ok();
         }
@@ -78,7 +75,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
 
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
     }
 }
