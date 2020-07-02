@@ -6,12 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using RECODME.RD.Jade.WebApi.Models.MenuModelViews;
+using RECODME.RD.Jade.WebApi.WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MealController : ControllerBase
+    public class MealController : BaseController
     {
         private MealBusinessObject _bo = new MealBusinessObject();
 
@@ -21,7 +22,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
             var ml = vm.ToMeal();
             var res = _bo.Create(ml);
 
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError());
         }
 
         [HttpGet("{id}")]
@@ -35,14 +36,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
                 var vm = MealViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<MealViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
 
             var list = new List<MealViewModel>();
             foreach (var item in res.Result)
@@ -57,19 +58,19 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
         public ActionResult Update([FromBody]MealViewModel ml)
         {
             var currentResult = _bo.Read(ml.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
 
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Name == ml.Name && current.StartingHours == ml.StartingHours && current.EndingHours == ml.EndingHours) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name == ml.Name && current.StartingHours == ml.StartingHours && current.EndingHours == ml.EndingHours) return NotModified();
 
             if (current.Name != ml.Name) current.Name = ml.Name;
             if (current.StartingHours != ml.StartingHours) current.StartingHours = ml.StartingHours;
             if (current.EndingHours != ml.EndingHours) current.EndingHours = ml.EndingHours;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
 
             return Ok();
         }
@@ -80,7 +81,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.MenuControllers
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
 
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
     }
 }
