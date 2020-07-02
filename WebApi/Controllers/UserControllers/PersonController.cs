@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using RECODME.RD.Jade.WebApi.Models.UserModelViews;
+using WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonController : ControllerBase
+    public class PersonController : BaseController
     {
         private PersonBusinessObject _bo = new PersonBusinessObject();
 
@@ -18,7 +19,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
         {
             var rt = vm.ToPerson();
             var res = _bo.Create(rt);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() : InternalServerError()); 
         }
 
         [HttpGet("{id}")]
@@ -31,14 +32,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
                 var vm = PersonViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<PersonViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
             var list = new List<PersonViewModel>();
             foreach (var item in res.Result)
             {
@@ -51,7 +52,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
         public ActionResult Update([FromBody]PersonViewModel rt)
         {
             var currentResult = _bo.Read(rt.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
@@ -64,7 +65,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
             if (current.BirthDate != rt.Birthdate) current.BirthDate = rt.Birthdate;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
             return Ok();
 
         }
@@ -74,7 +75,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
         {
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
 
         }
 
