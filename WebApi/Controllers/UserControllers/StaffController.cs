@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using RECODME.RD.Jade.WebApi.Models.UserModelViews;
-using WebApi.Controllers;
+using RECODME.RD.Jade.WebApi.Controllers;
 
 namespace RECODME.RD.Jade.WebApi.Controllers.UserControllers
 {
