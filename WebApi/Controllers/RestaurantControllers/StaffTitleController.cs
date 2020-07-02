@@ -13,7 +13,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.StaffTitleControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StaffTitleController : ControllerBase
+    public class StaffTitleController : BaseController
     {
         private StaffTitleBusinessObject _bo = new StaffTitleBusinessObject();
 
@@ -22,7 +22,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.StaffTitleControllers
         {
             var st = vm.ToStaffTitle();
             var res = _bo.Create(st);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return (res.Success ? Ok() :InternalServerError());
         }
 
         [HttpGet("{id}")]
@@ -35,14 +35,14 @@ namespace RECODME.RD.Jade.WebApi.Controllers.StaffTitleControllers
                 var vm = StaffTitleViewModel.Parse(res.Result);
                 return vm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return InternalServerError();
         }
 
         [HttpGet]
         public ActionResult<List<StaffTitleViewModel>> List()
         {
             var res = _bo.List();
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return InternalServerError();
             var list = new List<StaffTitleViewModel>();
             foreach (var item in res.Result)
             {
@@ -55,11 +55,11 @@ namespace RECODME.RD.Jade.WebApi.Controllers.StaffTitleControllers
         public ActionResult Update([FromBody]StaffTitleViewModel st)
         {
             var currentResult = _bo.Read(st.Id);
-            if (!currentResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!currentResult.Success) return InternalServerError();
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.StartDate == st.StartDate && current.EndDate == st.EndDate) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.StartDate == st.StartDate && current.EndDate == st.EndDate) return NotModified();
 
             if (current.StartDate != st.StartDate) current.StartDate = st.StartDate;
             if (current.EndDate != st.EndDate) current.EndDate = st.EndDate;
@@ -67,7 +67,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.StaffTitleControllers
             if (current.StaffRecordId != st.StaffRecordId) current.StaffRecordId = st.StaffRecordId;
 
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return InternalServerError();
             return Ok();
         }
 
@@ -76,7 +76,7 @@ namespace RECODME.RD.Jade.WebApi.Controllers.StaffTitleControllers
         {
             var result = _bo.Delete(id);
             if (result.Success) return Ok();
-            return new ObjectResult(HttpStatusCode.InternalServerError);
+            return InternalServerError();
         }
     }
 }
