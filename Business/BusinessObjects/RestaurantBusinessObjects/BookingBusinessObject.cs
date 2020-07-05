@@ -24,6 +24,9 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
         {
             try
             {
+                var invalidDate = (item.Date < DateTime.UtcNow || item.Date > DateTime.UtcNow.AddMonths(2));
+                if (invalidDate)
+                    return new OperationResult() { Success = false };
                 _dao.Create(item);
                 return new OperationResult() { Success = true };
             }

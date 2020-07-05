@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using RECODME.RD.Jade.Business.OperationResults;
+﻿using RECODME.RD.Jade.Business.OperationResults;
 using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -24,11 +23,11 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
 
         public OperationResult Create (Restaurant item)
         {
-
-            var exists = 
-
             try
             {
+                var itemHasSameName = _dao.List().Any();
+                if (itemHasSameName)
+                    return new OperationResult() { Success = false };
                 _dao.Create(item);
                 return new OperationResult() { Success = true };
 

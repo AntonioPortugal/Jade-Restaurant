@@ -3,6 +3,7 @@ using RECODME.RD.Jade.Data.RestaurantInfo;
 using RECODME.RD.Jade.DataAccess.DataAccessObjects.RestaurantDataAccessObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -24,6 +25,9 @@ namespace RECODME.RD.Jade.Business.BusinessObjects.RestaurantBusinessObjects
         {
             try
             {
+                var itemHasSameName = _dao.List().Any(x => x.Name == item.Name && x.Position == item.Position);
+                if (itemHasSameName)
+                    return new OperationResult() { Success = false };
                 _dao.Create(item);
                 return new OperationResult() { Success = true };
 
