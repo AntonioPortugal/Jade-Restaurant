@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RECODME.RD.Jade.DataAccess.Properties {
+namespace DataAccess.Properties {
     using System;
     
     
@@ -61,7 +61,7 @@ namespace RECODME.RD.Jade.DataAccess.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server=RECODME-JOAOJ\SQLEXPRESS;Database=JadeRestaurante;Trusted_Connection=true;.
+        ///   Looks up a localized string similar to Server=RECODME-AMARTIM\SQLEXPRESS;Database=JadeRestaurante;Trusted_Connection=true;.
         /// </summary>
         public static string ConnectionString {
             get {

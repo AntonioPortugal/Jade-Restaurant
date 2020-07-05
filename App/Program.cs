@@ -6,8 +6,7 @@ namespace App
     {
         static void Main(string[] args)
         {
-            var database = new RestaurantContext();
-            database.Database.EnsureCreated();
+
 
         }
 
